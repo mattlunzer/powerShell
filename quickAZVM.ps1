@@ -1,9 +1,9 @@
 # Create a quick VM
 # Connect-AzAccount
 
-Set-AzContext -SubscriptionName $subscription
-
 #var
-$subscription = subscription1
+$subscription = Read-Host -Prompt "Enter your Azure subscription name"
+
+Set-AzContext -SubscriptionName $subscription
 
 New-AzVM -Name MyVm -Credential (Get-Credential)
