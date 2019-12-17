@@ -1,0 +1,1 @@
+Get-AzLocation | Select DisplayName | Sort-Object DisplayName 
