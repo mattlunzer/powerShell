@@ -1,4 +1,4 @@
-$rg="myWebApp"
+$rg="myWebAppAppgw"
 $webappname="mywebapp$(Get-Random)"
 $location="CentralUS"
 
@@ -13,3 +13,4 @@ New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -
 
 # apply custom domain - no workie
 #Set-AzWebApp -NYame $webappname -ResourceGroupName $rg -HostNames @($fqdn,"$webappname.azurewebsites.net")
+
