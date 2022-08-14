@@ -1,0 +1,5 @@
+"Name","ResourceGroupName","Location","Id","AddressSpace","dnsSettings","VnetPeerings","EnableDdosProtection"
+"az-hub-vnet","lab-dns-resolver","eastus2","/subscriptions/24316994-a11b-4f7e-b51d-318bda27b833/resourceGroups/lab-dns-resolver/providers/Microsoft.Network/virtualNetworks/az-hub-vnet","10.0.20.0/24, 10.100.0.0/24","","[ Hub-to-Spoke1 | Connected |  | True True ] , [ Hub-to-Spoke2 | Connected |  | True True ] ","False"
+"az-spk1-vnet","lab-dns-resolver","eastus2","/subscriptions/24316994-a11b-4f7e-b51d-318bda27b833/resourceGroups/lab-dns-resolver/providers/Microsoft.Network/virtualNetworks/az-spk1-vnet","10.0.21.0/24","","[ Spoke1-to-Hub | Connected |  | False ] ","False"
+"az-spk2-vnet","lab-dns-resolver","eastus2","/subscriptions/24316994-a11b-4f7e-b51d-318bda27b833/resourceGroups/lab-dns-resolver/providers/Microsoft.Network/virtualNetworks/az-spk2-vnet","10.0.22.0/24","","[ Spoke2-to-Hub | Connected |  | False ] ","False"
+"onprem-vnet","lab-dns-resolver","eastus2","/subscriptions/24316994-a11b-4f7e-b51d-318bda27b833/resourceGroups/lab-dns-resolver/providers/Microsoft.Network/virtualNetworks/onprem-vnet","192.168.100.0/24","192.168.100.5","","False"
