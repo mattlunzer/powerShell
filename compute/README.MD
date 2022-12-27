@@ -2,7 +2,7 @@
 
 The following powershell scripts and their use case in this folder are as follows;
 
-- [shutdownVmByTag.ps1](/shutdownVmByTag.ps1) - 
+- [shutdownVmByTag.ps1](https://github.com/mattlunzer/powerShell/blob/master/compute/shutdownVmByTag.ps1) - 
 This script shuts down virtual machines with the Resource Tag key "Shutdown", and the value of "True". It was authored to be used by an Azure function with a timing trigger for deallocating virtual machines after business hours.
 
 
