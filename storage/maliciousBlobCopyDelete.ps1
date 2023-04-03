@@ -7,7 +7,7 @@ $scanResult = $eventGridEvent.data.scanResultType
 $blobUri = $eventGridEvent.data.blobUri
 
 # use this for testing
-#$blobUri = "https://dmsstorageacct1.blob.core.windows.net/malware/eicar.com.txt"
+#$blobUri = "[blobUri]"
 $storageAccountName = (($blobUri -split "//")[1] -split "\.")[0]
 $malwareContainerName = ($blobUri -split "/")[-2]
 $malwareBlobName = ($blobUri -split "/")[-1]
