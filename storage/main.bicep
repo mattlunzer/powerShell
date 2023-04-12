@@ -1,16 +1,15 @@
 // location param
 param location string = resourceGroup().location
 //storage params
-param storageAccountName string = 'blobstor${uniqueString(resourceGroup().id)}'
+param storageAccountName string = 'avblobstor${uniqueString(resourceGroup().id)}'
 param tags object = {}
 param storageAccountSku string = 'Standard_LRS'
 param storageAccountType string = 'StorageV2'
 param containerNames array = ['upload', 'quarantine']
 // event grid params
 param eventGridTopicName string = 'avforblobtopic'
-// param eventHubNamespaceName string
-// param eventHubName string
-// param eventHubAuthorizationRuleName string
+// log analtyics param
+param logAnalyticsName string = 'avforbloblogs'
 
 // funtion params
 param appName string = 'AVforBlobFunctionName${uniqueString(resourceGroup().id)}'
@@ -29,7 +28,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 }
 
 resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2021-06-01' = {
-  name: '${storageAccount.name}/default'
+  parent: storageAccount
+  name: 'default'
 }
 
 // Create containers if specified
@@ -76,3 +76,13 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
+resource workspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
+  name: logAnalyticsName
+  location: location
+  properties: {
+    retentionInDays: 30
+    sku: {
+      name: 'PerGB2018'
+    }
+  }
+}
