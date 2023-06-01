@@ -22,7 +22,7 @@ foreach ($AzureSQLServer in $AzureSQLServers){
         -ResourceGroupName  $AzureSQLServer.ResourceGroupName `
         -ServerName $AzureSQLServer.Name `
         -DatabaseName $AzureSQLServerDataBase.DatabaseName `
-        -BaselineResult @('sql_maint', 'pentaho', 'dip_admin', 'birt') `
+        -BaselineResult @('user1', 'user2', 'user3', 'user4') `
         -RuleID 'VA1258'
         #Start the scan for the rule VA1258
         Start-AzSqlDatabaseVulnerabilityAssessmentScan `
