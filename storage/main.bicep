@@ -7,7 +7,7 @@ param storageAccountSku string = 'Standard_LRS'
 param storageAccountType string = 'StorageV2'
 param containerNames array = ['upload', 'quarantine']
 // event grid params
-param eventGridTopicName string = 'avforblobtopic'
+param eventGridTopicName string = 'avforblobtopic${uniqueString(resourceGroup().id)}'
 // log analtyics param
 param logAnalyticsName string = 'avforbloblogs'
 
