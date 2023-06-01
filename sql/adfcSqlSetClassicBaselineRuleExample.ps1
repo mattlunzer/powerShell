@@ -15,6 +15,7 @@ $AzureSQLServers = Get-AzResource  | Where-Object ResourceType -EQ Microsoft.SQL
 foreach ($AzureSQLServer in $AzureSQLServers){
     $AzureSQLServerDataBases = Get-AzSqlDatabase -ServerName $AzureSQLServer.Name -ResourceGroupName $AzureSQLServer.ResourceGroupName | Where-Object DatabaseName -NE "master"
     #Write-Host $AzureSQLServerDataBases
+    
     foreach ($AzureSQLServerDataBase in $AzureSQLServerDataBases){
         #Write-Host "Database: " $($AzureSQLServerDataBase).DatabaseName
         #Set the baseline for the rule VA1258
@@ -24,6 +25,7 @@ foreach ($AzureSQLServer in $AzureSQLServers){
         -DatabaseName $AzureSQLServerDataBase.DatabaseName `
         -BaselineResult @('user1', 'user2', 'user3', 'user4') `
         -RuleID 'VA1258'
+        
         #Start the scan for the rule VA1258
         Start-AzSqlDatabaseVulnerabilityAssessmentScan `
         -ResourceGroupName  $AzureSQLServer.ResourceGroupName `
