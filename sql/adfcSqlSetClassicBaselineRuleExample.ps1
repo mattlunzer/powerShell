@@ -19,5 +19,9 @@ foreach ($AzureSQLServer in $AzureSQLServers){
         -DatabaseName $AzureSQLServerDataBase.DatabaseName `
         -BaselineResult @('sql_maint', 'pentaho', 'dip_admin', 'birt') `
         -RuleID 'VA1258'
+        Start-AzSqlDatabaseVulnerabilityAssessmentScan `
+        -ResourceGroupName  $AzureSQLServer.ResourceGroupName `
+        -ServerName $AzureSQLServer.Name `
+        -DatabaseName $AzureSQLServerDataBase.DatabaseName
     }
 }
