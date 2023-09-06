@@ -1,0 +1,19 @@
+{
+  "Name": "CustomImageTemplateRole",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Custom role for creating images with custom image templates",
+  "Actions": [
+    "Microsoft.Compute/galleries/read",
+    "Microsoft.Compute/galleries/images/read",
+    "Microsoft.Compute/galleries/images/versions/read",
+    "Microsoft.Compute/galleries/images/versions/write",
+    "Microsoft.Compute/images/write",
+    "Microsoft.Compute/images/read",
+    "Microsoft.Compute/images/delete"   
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<subID>"
+  ]
+}
