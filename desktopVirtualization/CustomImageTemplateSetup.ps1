@@ -21,4 +21,4 @@ New-AzRoleDefinition -InputFile ".\aibCustomRole.Json"
 $userMIid = (Get-AzADServicePrincipal -DisplayName $userMI).id
 
 #Assign Role
-New-AzRoleAssignment -ObjectId $userMIid -RoleDefinitionName "Custom Role for Custom Image Templates" -Scope "/subscriptions/$subscriptionID"
+New-AzRoleAssignment -ObjectId $userMIid -RoleDefinitionName "CustomRole-CustomImageTemplate" -Scope "/subscriptions/$subscriptionID"
