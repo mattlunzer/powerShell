@@ -1,6 +1,6 @@
 
 #set variables
-$resourceGroup = 'CustomImageTemplate'
+$resourceGroup = 'AVDPOC'
 $location = 'eastus'
 $userMI = 'CustomImageTemplateUserMI'
 $subscriptionID = $(Get-AzSubscription).Id
@@ -22,3 +22,23 @@ $userMIid = (Get-AzADServicePrincipal -DisplayName $userMI).id
 
 #Assign Role
 New-AzRoleAssignment -ObjectId $userMIid -RoleDefinitionName "CustomRole-CustomImageTemplate" -Scope "/subscriptions/$subscriptionID"
+
+#create Compute Gallery
+$gallery = New-AzGallery `
+   -GalleryName 'AVDGallery' `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+   -Description 'Azure Compute Gallery for AVD'
+
+#create image definition
+$imageDefinition = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+   -HyperVGeneration V2 `
+   -Name 'AVDImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
