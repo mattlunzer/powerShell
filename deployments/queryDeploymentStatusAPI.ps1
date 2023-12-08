@@ -11,7 +11,7 @@ param(
     [string]$deploymentName
 )
 
-#get the token
+#get the token of logged in user
 $token = Get-AzAccessToken | select -ExpandProperty Token
 $authHeader = @{
   'Content-Type'='application/json'
@@ -26,5 +26,5 @@ $uri = 'https://management.azure.com/subscriptions/' + $subId + '/resourcegroups
 #invoke the rest method
 $deployState = (invoke-restmethod -method GET -uri $uri -headers $authHeader)
 
-#return the provisioning state (Succeeded, Failed, etc.)
+#return the provisioning state (Running, Succeeded, Failed, etc.)
 $deployState.properties.provisioningState
