@@ -20,7 +20,7 @@ $authHeader = @{
 #$subID = (get-azsubscription).id
 #echo $authHeader
 #build the uri
-$uri = 'https://management.azure.com/subscriptions/' + $subId + '/resourcegroups/' + $resourceGroupName + '/providers/Microsoft.Resources/deployments/' + $deploymentName + '?api-version=2021-04-01'
+$uri = 'https://management.azure.com/subscriptions/' + $subscriptionId + '/resourcegroups/' + $resourceGroupName + '/providers/Microsoft.Resources/deployments/' + $deploymentName + '?api-version=2021-04-01'
 #echo $uri
 
 #invoke the rest method
