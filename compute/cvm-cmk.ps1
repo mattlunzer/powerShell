@@ -2,8 +2,8 @@
 $location="eastus"
 $rgName="rg-cvm-cmk-demo"
 $kvName="keyvault-cvm-cmk"
-$vmName = "cvm-cmk-rhel1"
-#$Password = 
+$vmName = "cvm-cmk-rhel4"
+$Password = ""
 
 #Create Resource Group
 az group create --location $location --resource-group $rgName
@@ -32,8 +32,9 @@ $diskEncryptionSetID=(az disk-encryption-set show -n cvm-cmk-des -g $rgName --qu
 az vm create `
 --resource-group $rgName `
 --name $vmName `
---size Standard_DC4as_v5 `
---generate-ssh-keys ` 
+--size Standard_DC2ads_v5 `
+--admin-username "azureuser" `
+--admin-password $Password `
 --enable-vtpm true `
 --enable-secure-boot true `
 --image "RedHat:rhel-cvm:9_3_cvm_sev_snp:9.3.2023111017" `
